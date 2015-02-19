@@ -15,7 +15,11 @@ class CompilerExtension extends Nette\DI\CompilerExtension{
     //put your code here
     
     public function loadConfiguration() {
-        
+        $builder = $this->getContainerBuilder();
+        //ddump($builder);
+        $builder->addDefinition($this->prefix('modules'))
+                ->setClass('\Core\ModulesLoader', ['@nette.presenterFactory', '@dibi.connection', '@cacheStorage']);
+               
     }
     
 }

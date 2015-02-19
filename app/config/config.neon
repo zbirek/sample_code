@@ -24,9 +24,9 @@ nette:
 services:
 	#- App\Model\UserManager
 	router: App\RouterFactory::createRouter
+	- App\NodeModel
 
 extensions:
 	dibi: Dibi\Bridges\Nette\DibiExtension22
-	- \Flame\Modules\DI\ModulesExtension
-
-	- \App\ArticleModule\ModulesExtension
+#	- \CompilerExtension	
+#	- \App\ArticleModule\ModulesExtension

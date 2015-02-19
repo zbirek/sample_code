@@ -1,0 +1,9 @@
+{* Latte template *}
+
+{block content}
+
+Home page :}
+
+{foreach $modules as $module}
+    {? $module->render()}
+{/foreach}

@@ -1,0 +1,14 @@
+{* Latte template *}
+<h1>Backend</h1>
+
+
+<div class="menu">
+    <ul>
+        {foreach $modules as $module}
+            <li><a href="{link ':'.$module->uid.':Backend:default'}">{$module->module_name}</a></li>
+        {/foreach}
+    </ul>    
+</div>
+
+        
+{block content} {/block}

@@ -7,12 +7,10 @@ namespace App\ArticleModule\Presenters;
  */
 
 /**
- * Description of FrontendPresenter
+ * Description of AdminPresenter
  *
- * @author Jiri Jelinek <jelinekvb@gmail.com>
- * @version 11.2.2015
- * 
+ * @author Jiri
  */
-class FrontendPresenter extends \App\Presenters\BasePresenter{
-	
+class BackendPresenter extends \App\BackendModule\Presenters\BaseBackendPresenter{
+    
 }
