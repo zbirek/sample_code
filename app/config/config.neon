@@ -25,6 +25,8 @@ services:
 	#- App\Model\UserManager
 	router: App\RouterFactory::createRouter
 	- App\NodeModel
+	- App\ArticleModule\ArticleModel
+	- IArticleControl
 
 extensions:
 	dibi: Dibi\Bridges\Nette\DibiExtension22

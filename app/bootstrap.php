@@ -19,8 +19,8 @@ $configurator->createRobotLoader()
 
 
 $configurator->onCompile[] = function ($configurator, $compiler) {
-			$compiler->addExtension('modulLoader', new CompilerExtension);
-		};
+	$compiler->addExtension('modulLoader', new CompilerExtension);
+};
 
         
 $configurator->addConfig(__DIR__ . '/config/config.neon');

@@ -27,12 +27,16 @@ class PagePresenter extends \App\Presenters\BasePresenter {
             $this->createControl($module['control'], $id_node);
 
             
-            $this->template->modules = $this->controls;
-            //ddump($this);
-            //ddump($this->controls);
         }
+		
+		$this->template->modules = $this->controls;
     }
 
+	public function createComponentContent($name) {
+		ddump($name);
+	}
+	
+	
     public function createControl($className, $key) {
        
         $control = new $className($this, $key);
