@@ -3,8 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/cms/vendor/dibi/dibi/dibi/bridges/Nette-2.2/config.sample.neon</file>
-            <file>file:/C:/xampp/htdocs/cms/app/classes/CompilerExtension.php</file>
+            <file>file:/E:/xampp/htdocs/cms2/app/modules/ArticleModule/controls/ArticleControl/ArticleControl.php</file>
+            <file>file:/E:/xampp/htdocs/cms2/app/config/config.neon</file>
         </group>
     </open-files>
 </project-private>

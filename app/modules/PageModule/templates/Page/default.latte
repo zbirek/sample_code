@@ -1,0 +1,31 @@
+{block content}
+<div class="page-header">
+	<h1>Administrace stránek</h1>
+</div>
+	
+	<div class="page-content">
+	<a class="btn btn-primary no-radius pull-right" href="{link addPage}"><i class="ace-icon fa fa-plus bigger-230"></i><br>Přidat stránku</a>
+	<table id="simple-table" class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Titulek</th>
+				<th>Obsah</th>
+				<th>Akce</th>
+			</tr>
+		</thead>
+		{foreach $pages as $page}
+			<tr>
+				<td>{$page->id_node}</td>
+				<td>{$page->title} </td>
+				<td>{$page->body|truncate:150} </td>
+				<td>
+					<div class="btn-group">
+						<a n:href="editPage $page->id_node" class="btn btn-xs btn-info"><span class="ace-icon fa fa-pencil bigger-120"></span></a>
+						<a n:href="deletePage! $page->id_node" class="btn btn-xs btn-danger"><span class="ace-icon fa fa-trash bigger-120"></span></a>				
+					</div>
+				</td>
+			</tr>
+		{/foreach}
+	</table>
+</div>

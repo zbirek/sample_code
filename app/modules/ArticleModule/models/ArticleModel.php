@@ -13,5 +13,19 @@ namespace App\ArticleModule;
  */
 class ArticleModel extends \App\BaseModel{
     
-    
+    protected $tArticle;
+	
+	public function __construct(\DibiConnection $dibi) {
+		parent::__construct($dibi);
+		$this->tArticle = self::PREFIX."article";
+	}
+	
+	public function getFluentArticle() {
+		return $this->database->select("*")
+				->from($this->tArticle);
+	}
+	
+	
+	
+	
 }

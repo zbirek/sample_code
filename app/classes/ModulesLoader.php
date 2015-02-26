@@ -38,16 +38,35 @@ class ModulesLoader extends \Nette\Object{
     
     public function getModules() {
         if(!$this->modules) $this->setModules();
-         
+		
         return $this->modules;
     }
     
-    public function setModules(){        
-        $this->modules = $this->database->select("*")
-                            ->from($this->tModules)
-                            ->where('active = 1')
-                            ->fetchAssoc('id_module');
-       
+	public function getAdminModules() {
+		$modules = $this->getModules();
+		
+		$tmp = [];
+		foreach($modules as $module) {
+			if($module['have_admin']) $tmp[] = $module;
+		}
+		
+		return $tmp;
+	}
+	
+	
+    public function setModules(){
+		$cache = new \Nette\Caching\Cache($this->cache);		
+		
+		$this->modules = $cache->load("module");
+		
+		if($this->modules == NULL){		
+			$this->modules = $this->database->select("*")
+								->from($this->tModules)
+								->where('active = 1')
+								->fetchAssoc('id_module');
+
+			$cache->save("module", $this->modules, array(\Nette\Caching\Cache::TAGS => "module"));
+		}	
     }
     
     public function getModule($id) {
@@ -56,6 +75,16 @@ class ModulesLoader extends \Nette\Object{
         return $this->modules[$id];        
     }
     
+	public function getModuleByUid($uid) {
+		if(!$this->modules) $this->setModules();
+        
+		foreach($this->modules as $module) {
+			if($module->uid == $uid) return $module;
+		}
+		
+		return NULL;
+	}
+	
     
     public function findModules() {
         

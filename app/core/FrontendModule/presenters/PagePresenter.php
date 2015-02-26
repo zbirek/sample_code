@@ -7,7 +7,7 @@ namespace App\FrontendModule\Presenters;
  *
  * @author Jiri
  */
-class PagePresenter extends \App\Presenters\BasePresenter {
+class PagePresenter extends \App\Presenters\BaseFrontendPresenter {
 
     /** @var \App\NodeModel @inject */
     public $nodeModel;
@@ -30,17 +30,20 @@ class PagePresenter extends \App\Presenters\BasePresenter {
         }
 		
 		$this->template->modules = $this->controls;
+		//ddump($this->template->modules);
     }
 
-	public function createComponentContent($name) {
-		ddump($name);
+	public function createComponentContent($name, $od) {
+		//ddump($name, $od);
 	}
 	
 	
-    public function createControl($className, $key) {
-       
-        $control = new $className($this, $key);
-        $this->controls[] = $control;
+    public function createControl($className, $key) {		
+		$component = new $className($this, $key);	
+		$component->load($key);		
+		
+		$this->controls[] = $component;
+		
     }
 
 }

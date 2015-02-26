@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "12dc26279234d9d6ba143d7666d46d7c",
+    "hash": "fb53c6e125196e57f9cbabb2e6cfd4a5",
     "packages": [
         {
             "name": "dg/adminer-custom",
@@ -1167,6 +1167,66 @@
             "time": "2014-12-30 09:55:38"
         },
         {
+            "name": "nextras/forms",
+            "version": "v1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nextras/forms.git",
+                "reference": "eca08a9576151b4c83c4931a2d9734bd89452232"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nextras/forms/zipball/eca08a9576151b4c83c4931a2d9734bd89452232",
+                "reference": "eca08a9576151b4c83c4931a2d9734bd89452232",
+                "shasum": ""
+            },
+            "require": {
+                "nette/application": "~2.2",
+                "nette/component-model": "~2.2",
+                "nette/forms": "~2.2",
+                "nette/utils": "~2.2",
+                "php": "~5.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nextras\\Forms\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0",
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "http://davidgrudl.com"
+                },
+                {
+                    "name": "Jan Skrasek",
+                    "email": "hrach.cz@gmail.com",
+                    "homepage": "http://jan.skrasek.com"
+                },
+                {
+                    "name": "Nextras Community",
+                    "homepage": "https://github.com/nextras/forms/graphs/contributors"
+                }
+            ],
+            "description": "Extra form components for Nette Framework.",
+            "keywords": [
+                "form",
+                "nette"
+            ],
+            "time": "2014-05-24 11:17:47"
+        },
+        {
             "name": "tracy/tracy",
             "version": "v2.2.6",
             "source": {
@@ -1279,13 +1339,18 @@
             "time": "2015-02-08 04:13:28"
         }
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": [
+
+    ],
     "prefer-stable": false,
-    "prefer-lowest": false,
     "platform": {
         "php": ">= 5.3.7"
     },
-    "platform-dev": []
+    "platform-dev": [
+
+    ]
 }

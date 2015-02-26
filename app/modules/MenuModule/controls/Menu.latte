@@ -1,0 +1,5 @@
+{block content}
+
+<ul n:foreach="$menu as $item">
+	<li><a href="{plink Page:default $item->slug}">{$item->title}</a></li>
+</ul>

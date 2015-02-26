@@ -1,6 +1,6 @@
 <?php
 
-namespace App\BackendModule\Presenters;
+namespace App\AdminModule\Presenters;
 
 /**
  * Description of BasePresenter
@@ -20,7 +20,7 @@ class BaseBackendPresenter extends \App\Presenters\BasePresenter{
         {
             $this->redirect(':Sign:in');
         }
-        
+		
         $this->setLayout($this->context->parameters['appDir'] . '/core/BackendModule/templates/@layout.latte');        
     }
     
@@ -36,7 +36,7 @@ class BaseBackendPresenter extends \App\Presenters\BasePresenter{
     public function beforeRender() {
         parent::beforeRender();
         
-        $this->template->modules = $this->modules->getModules();
+        $this->template->modules = $this->modules->getAdminModules();
     }
     
     

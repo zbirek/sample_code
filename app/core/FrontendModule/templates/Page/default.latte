@@ -3,7 +3,8 @@
 {block content}
 
 Home page :}
-
-{foreach $modules as $module}
-    {control content, $module, 'id'=>1}
+{foreach $modules as $key => $module}
+    {? 
+		$module->render();
+	}
 {/foreach}

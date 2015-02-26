@@ -21,14 +21,18 @@ class SignPresenter extends BasePresenter
 	{
 		$form = new Nette\Application\UI\Form;
 		$form->addText('username', 'Username:')
+			->setAttribute('class', 'form-control')
+			->setAttribute('placeholder', 'Uživatelské jméno')		
 			->setRequired('Please enter your username.');
 
 		$form->addPassword('password', 'Password:')
+			->setAttribute('class', 'form-control')
+			->setAttribute('placeholder', 'Heslo')
 			->setRequired('Please enter your password.');
 
-		$form->addCheckbox('remember', 'Keep me signed in');
+		$form->addCheckbox('remember');
 
-		$form->addSubmit('send', 'Sign in');
+		$form->addSubmit('send', 'Přihlásit se');
 
 		// call method signInFormSucceeded() on success
 		$form->onSuccess[] = array($this, 'signInFormSucceeded');
@@ -46,7 +50,7 @@ class SignPresenter extends BasePresenter
 
 		try {
 			$this->getUser()->login($values->username, $values->password);
-			$this->redirect('Homepage:');
+			$this->redirect(':Backend:BaseBackend:default');
 
 		} catch (Nette\Security\AuthenticationException $e) {
 			$form->addError($e->getMessage());

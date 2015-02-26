@@ -10,24 +10,14 @@ use Nette,
 /**
  * Users management.
  */
-class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
+class UserManager extends \App\BaseModel implements Nette\Security\IAuthenticator
 {
 	const
-		TABLE_NAME = 'users',
-		COLUMN_ID = 'id',
-		COLUMN_NAME = 'username',
+		TABLE_NAME = 'cms_user',
+		COLUMN_ID = 'id_user',
+		COLUMN_NAME = 'login',
 		COLUMN_PASSWORD_HASH = 'password',
 		COLUMN_ROLE = 'role';
-
-
-	/** @var Nette\Database\Context */
-	private $database;
-
-
-	public function __construct(Nette\Database\Context $database)
-	{
-		$this->database = $database;
-	}
 
 
 	/**
@@ -39,7 +29,7 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 	{
 		list($username, $password) = $credentials;
 
-		$row = $this->database->table(self::TABLE_NAME)->where(self::COLUMN_NAME, $username)->fetch();
+		$row = $this->database->select("*")->from(self::TABLE_NAME)->where(self::COLUMN_NAME." = %s", $username)->fetch();
 
 		if (!$row) {
 			throw new Nette\Security\AuthenticationException('The username is incorrect.', self::IDENTITY_NOT_FOUND);

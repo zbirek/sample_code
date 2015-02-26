@@ -30,8 +30,8 @@ class RouterFactory extends \Nette\Object
         //$router[] = new Route('<presenter>/<action>[/<id>]', 'Homepage:default');
 		//$router[] = new Route('[/<slug>]/[/<id>]', ':Front:Page:default');
         
-         $router[] = new Route('admin/<module>/<action>[/<id>]', array(
-            'module' => 'Backend',
+         $router[] = new Route('admin/<presenter>/<action>[/<id>]', array(
+            'module' => 'Admin',
             'presenter' => 'BaseBackend',
             'action' => 'default',
                 )

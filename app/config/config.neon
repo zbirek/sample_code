@@ -22,11 +22,13 @@ nette:
 
 
 services:
-	#- App\Model\UserManager
+	- App\Model\UserManager
 	router: App\RouterFactory::createRouter
 	- App\NodeModel
-	- App\ArticleModule\ArticleModel
-	- IArticleControl
+	ArticleModel : App\ArticleModule\ArticleModel
+	PageModel : App\PageModel
+	MenuModel : App\MenuModel
+
 
 extensions:
 	dibi: Dibi\Bridges\Nette\DibiExtension22

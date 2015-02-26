@@ -1,5 +1,5 @@
 <?php
-namespace App\ArticleModule\Presenters;
+namespace App\AdminModule\Presenters;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,6 +11,6 @@ namespace App\ArticleModule\Presenters;
  *
  * @author Jiri
  */
-class BackendPresenter extends \App\BackendModule\Presenters\BaseBackendPresenter{
+class ArticlePresenter extends BaseBackendPresenter{
     
 }

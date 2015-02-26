@@ -15,8 +15,8 @@ class NodeModel extends BaseModel{
     protected $nodes;
     
     
-    public function __construct(\DibiConnection $dibi) {
-        parent::__construct($dibi);
+    public function __construct(\DibiConnection $dibi, \Core\ModulesLoader $model) {
+        parent::__construct($dibi, $model);
         $this->tNode = self::PREFIX . "node";
     }
     
