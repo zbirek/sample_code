@@ -27,16 +27,16 @@
         },
         {
             "name": "dibi/dibi",
-            "version": "v2.3.0",
+            "version": "v2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dg/dibi.git",
-                "reference": "5970db58aaf3c24c76306a0acbf683692e0fc539"
+                "reference": "a3e5ac86f7f3d80bb7927a9830991c73e10d4624"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dg/dibi/zipball/5970db58aaf3c24c76306a0acbf683692e0fc539",
-                "reference": "5970db58aaf3c24c76306a0acbf683692e0fc539",
+                "url": "https://api.github.com/repos/dg/dibi/zipball/a3e5ac86f7f3d80bb7927a9830991c73e10d4624",
+                "reference": "a3e5ac86f7f3d80bb7927a9830991c73e10d4624",
                 "shasum": ""
             },
             "require": {
@@ -86,7 +86,7 @@
                 "postgresql",
                 "sqlite"
             ],
-            "time": "2015-01-25 16:24:28"
+            "time": "2015-02-25 14:22:04"
         },
         {
             "name": "latte/latte",
@@ -1339,18 +1339,13 @@
             "time": "2015-02-08 04:13:28"
         }
     ],
-    "aliases": [
-
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ],
+    "stability-flags": [],
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": {
         "php": ">= 5.3.7"
     },
-    "platform-dev": [
-
-    ]
+    "platform-dev": []
 }

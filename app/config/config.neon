@@ -28,7 +28,7 @@ services:
 	ArticleModel : App\ArticleModule\ArticleModel
 	PageModel : App\PageModel
 	MenuModel : App\MenuModel
-
+	UserModel : App\UserModel
 
 extensions:
 	dibi: Dibi\Bridges\Nette\DibiExtension22

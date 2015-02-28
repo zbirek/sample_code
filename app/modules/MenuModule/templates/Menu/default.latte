@@ -1,0 +1,29 @@
+{block content}
+<div class="page-header">
+    <h1>Menu</h1>
+</div>
+<div class="page-content">
+    <div class="col-sm-6">
+        <div class="dd" id="nestable">
+            <ol class="dd-list">
+            {foreach $items as $item}
+                <li class="dd-item" id="{$item->id}">
+                    <div class="dd-handle">{$item->title}</div>
+                </li>
+            {/foreach}
+            </ol>
+        </div>
+    </div>
+</div>
+
+{/block}
+
+{block scripts}
+<script src="{$basePath}/admin_theme/assets/js/jquery.nestable.js"></script>
+<script>
+$('.dd').nestable();
+$('.dd-handle a').on('mousedown', function(e){
+   e.stopPropagation();
+});
+</script>
+{/block}
