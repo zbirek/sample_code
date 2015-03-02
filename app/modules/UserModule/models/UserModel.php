@@ -25,7 +25,7 @@ class UserModel extends \App\BaseModel {
                 ->insert($this->tUser, array(
                     'login' => $data->login,
                     'name' => $data->name,
-                    'password' => \App\Passwords::hash($data->password),
+                    'password' => \Nette\Security\Passwords::hash($data->password),
                     'email' => $data->email,
                     'role' => 'admin'
                 ))->execute();
@@ -57,7 +57,7 @@ class UserModel extends \App\BaseModel {
         if (!$values->password) {
             unset($values->password);
         } else {
-            $values->password = \App\Passwords::hash($values->password);
+            $values->password = \Nette\Security\Passwords::hash($values->password);
         }
 
         $this->database->update($this->tUser, $values)
