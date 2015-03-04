@@ -1,0 +1,12 @@
+{define row-actions}
+    <a href="editPage $page->id_node" class="btn btn-xs btn-success"><span class="ace-icon fa fa-search bigger-120"></span></a>
+    <a href="editPage $page->id_node" class="btn btn-xs btn-info"><span class="ace-icon fa fa-pencil bigger-120"></span></a>
+    <a href="deletePage! $page->id_node" class="btn btn-xs btn-danger"><span class="ace-icon fa fa-trash bigger-120"></span></a>				
+		
+{/define}
+
+{define col-active}
+<td>
+    {$cell ? 'Ano' : 'Ne'}
+</td>
+{/define}

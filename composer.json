@@ -19,7 +19,8 @@
 		"nette/nette": "~2.2.0",
 		"dg/adminer-custom": "~1.5",
 		"dibi/dibi": "*",
-		"nextras/forms": "1.4"
+		"nextras/forms": "1.4",
+		"nextras/datagrid": "~2.1"
 	},
 	"require-dev": {
 		"nette/tester": "~1.0"

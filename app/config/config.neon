@@ -20,6 +20,9 @@ nette:
 	session:
 		expiration: 14 days
 
+	latte:
+		macros:
+			- Nextras\Latte\Macros\RedefineMacro
 
 services:
 	- App\Model\UserManager
@@ -29,6 +32,7 @@ services:
 	PageModel : App\PageModel
 	MenuModel : App\MenuModel
 	UserModel : App\UserModel
+	LogisticModel : App\LogisticModel
 
 extensions:
 	dibi: Dibi\Bridges\Nette\DibiExtension22
