@@ -7,7 +7,7 @@ namespace App\FrontendModule\Presenters;
  *
  * @author Jiri
  */
-class PagePresenter extends \App\Presenters\BaseFrontendPresenter {
+class PagePresenter extends BaseFrontendPresenter {
 
     /** @var \App\NodeModel @inject */
     public $nodeModel;

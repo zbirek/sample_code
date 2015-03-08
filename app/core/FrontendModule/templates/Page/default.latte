@@ -3,6 +3,8 @@
 {block content}
 
 Home page :}
+{? $email = base64_encode('testovaci@test.com')}
+<a href="{plink Subscriber:active 'email'=>$email}">aktivovat email</a>
 {foreach $modules as $key => $module}
     {? 
 		$module->render();

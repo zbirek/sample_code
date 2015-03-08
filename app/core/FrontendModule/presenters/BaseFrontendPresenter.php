@@ -1,5 +1,5 @@
 <?php
-namespace App\Presenters;
+namespace App\FrontendModule\Presenters;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,10 +14,17 @@ namespace App\Presenters;
  * 
  */
 class BaseFrontendPresenter extends \App\Presenters\BasePresenter{
+    
+    public function startup() {
+        parent::startup();
+        
+        $this->setLayout($this->context->parameters['appDir'] . '/core/FrontendModule/templates/@layout.latte');
+    }
 	
 	public function createComponentMenu() {
 		return new \MenuControl($this, 'menu');
 	}
 	
+    
 	
 }

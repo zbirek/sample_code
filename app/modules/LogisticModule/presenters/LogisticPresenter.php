@@ -13,6 +13,9 @@ class LogisticPresenter extends BaseBackendPresenter {
     
     /** @var \App\LogisticModel  @inject */
     public $model;
+    
+    /** @var \App\SubscriberModel @inject */
+    public $subscriberModel;
 
     
     
@@ -45,7 +48,7 @@ class LogisticPresenter extends BaseBackendPresenter {
         try {
             $values = $form->getValues();
 
-            $this->model->addSubscriber($values);
+            $this->subscriberModel->addSubscriber($values);
 
             $this->flashMessage('Odběratel byl přidán', 'success');
             $this->redirect('default');
@@ -67,7 +70,7 @@ class LogisticPresenter extends BaseBackendPresenter {
         $grid->addColumn('active', 'Aktivní uživatel')->enableSort();
         
         $grid->setDataSourceCallback(function($filter, $order){
-           $source =  $this->model->getSubsciberFluent(); 
+           $source =  $this->subscriberModel->getSubsciberFluent(); 
            
            if($order){
                $source->orderBy($order[0]. " " . $order[1]);
@@ -83,5 +86,7 @@ class LogisticPresenter extends BaseBackendPresenter {
         
         return $grid;
     }
+    
+    
 
 }

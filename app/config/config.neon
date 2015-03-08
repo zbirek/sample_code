@@ -33,6 +33,7 @@ services:
 	MenuModel : App\MenuModel
 	UserModel : App\UserModel
 	LogisticModel : App\LogisticModel
+	SubscriberModel : App\SubscriberModel
 
 extensions:
 	dibi: Dibi\Bridges\Nette\DibiExtension22
