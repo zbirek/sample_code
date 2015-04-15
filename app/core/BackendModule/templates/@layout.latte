@@ -121,18 +121,7 @@
 		<!-- basic scripts -->
 
 		
-		<!--[if !IE]> -->
-		<script type="text/javascript">
-			window.jQuery || document.write("<script src="+{$basePath}+"/admin_theme/assets/js/jquery.js'>"+"<"+"/script>");
-		</script>
 
-		<!-- <![endif]-->
-
-		<!--[if IE]>
-<script type="text/javascript">
- window.jQuery || document.write("<script src='"+{$basePath}+"/assets/js/jquery1x.js'>"+"<"+"/script>");
-</script>
-<![endif]-->
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src="+{$basePath}+"/admin_theme/assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
 		</script>
@@ -396,7 +385,7 @@
 		<!-- the following scripts are used in demo only for onpage help and you don't need them -->
 		<link rel="stylesheet" href="../assets/css/ace.onpage-help.css" />
 		<link rel="stylesheet" href="../docs/assets/js/themes/sunburst.css" />
-
+        <script src="{$basePath}/js/jquery.js"></script>
 		<script type="text/javascript"> ace.vars['base'] = '..'; </script>
 		<script src="{$basePath}/admin_theme/assets/js/ace/elements.onpage-help.js"></script>
 		<script src="{$basePath}/admin_theme/assets/js/ace/ace.onpage-help.js"></script>

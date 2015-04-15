@@ -27,6 +27,7 @@ class RouterFactory extends \Nette\Object
 	{
 		$router = new RouteList();
         
+        $router[] = new Route('sitemap.xml', 'Frontend:Sitemap:default');
         //$router[] = new Route('<presenter>/<action>[/<id>]', 'Homepage:default');
 		//$router[] = new Route('[/<slug>]/[/<id>]', ':Front:Page:default');
         

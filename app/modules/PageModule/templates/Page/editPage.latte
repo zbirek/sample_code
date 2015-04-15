@@ -4,3 +4,17 @@
 </div>
 
 {control pageForm}
+
+{/block}
+{block scripts}
+<script src="{$basePath}/ckeditor/ckeditor.js"></script>
+<script src="{$basePath}/ckeditor/adapters/jquery.js"></script>
+   
+<script>
+$(document).ready(function() {
+  $('#frm-pageForm-body').ckeditor();
+
+});
+   
+</script>
+{/block}

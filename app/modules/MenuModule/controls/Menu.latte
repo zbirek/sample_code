@@ -1,5 +1,9 @@
 {block content}
 
 <ul n:foreach="$menu as $item">
-	<li><a href="{plink Page:default $item->slug}">{$item->title}</a></li>
+    {if $iterator->first}
+	<li><a href="{plink Page:default}">{$item->title}</a></li>
+    {else}
+    <li><a href="{plink Page:default $item->slug}">{$item->title}</a></li>
+    {/if}
 </ul>

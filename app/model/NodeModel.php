@@ -24,8 +24,7 @@ class NodeModel extends BaseModel{
         $this->nodes = $this->database->select("*")
                 ->from($this->tNode)
                 ->where("active = 1")
-                ->fetchAssoc('slug');
-                
+                ->fetchAssoc('slug');                
     }
     
     public function getNode($slug) {
@@ -35,6 +34,7 @@ class NodeModel extends BaseModel{
         
         return $this->nodes[$slug];       
     }
+    
     
 
     

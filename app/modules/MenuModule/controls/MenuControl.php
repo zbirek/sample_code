@@ -26,7 +26,7 @@ class MenuControl extends \Nette\Application\UI\Control{
 	}
 	
 	public function prepairMenu() {
-		$this->menu = $this->menuModel->getMenuFluent()->orderBy("position ASC")->fetchAll();
+		$this->menu = $this->menuModel->getMenu();
 	}
 	
 	
