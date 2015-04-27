@@ -1,7 +1,32 @@
-<h1>CMS2</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="{block #description}{/block}" />
+        <meta name="keywords" content="{block #keywords}{/block}" />
+        <meta name="author" content="jelinek-web.cz" />
+        {*<meta name="robots" content="{$robots}" n:ifset="$robots" /> *}
+        <meta name="copyright" content="(C) {= date('Y')} Jiří Jelínek" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+        {* 2. TITLE *}
+        <title>
+            {block #title|striptags|trim}{/block}
+            {if isset($title) or isset($menu_content->seo_title)} | {$mainTitle}{/if}
+        </title>
+
+        {* 3. FAVICON *} 
+        <link rel="shortcut icon" href="{$basePath}/custom/images/favicon.ico" type="image/x-icon">
+
+        {control css}
+        {control js}
+    </head>
+    <body>
+        {control menu}
 
 
-{control menu}
-
-
-{block content} {/block}
+        {block content} {/block}
+    </body>
+</html>

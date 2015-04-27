@@ -6,11 +6,11 @@
     <div class="col-sm-6">
         <div class="dd" id="nestable">
             <ol class="dd-list">
-            {foreach $items as $item}
-                <li class="dd-item" id="{$item->id}">
-                    <div class="dd-handle">{$item->title}</div>
-                </li>
-            {/foreach}
+                {foreach $items as $item}
+                    <li class="dd-item" data-id="{$item->id}">
+                        <div class="dd-handle">{$item->title}</div>
+                    </li>
+                {/foreach}
             </ol>
         </div>
     </div>
@@ -21,9 +21,16 @@
 {block scripts}
 <script src="{$basePath}/admin_theme/assets/js/jquery.nestable.js"></script>
 <script>
-$('.dd').nestable();
-$('.dd-handle a').on('mousedown', function(e){
-   e.stopPropagation();
-});
+    $(function(){
+        $('.dd').nestable();
+        $('.dd-handle a').on('mousedown', function (e) {
+            e.stopPropagation();
+        });
+        $('.dd').on('change', function (e) {
+            var list   = e.length ? e : $(e.target);
+            var output = list.data('output');
+            console.log(list.nestable('output'));
+        });
+    });
 </script>
 {/block}

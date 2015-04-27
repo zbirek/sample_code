@@ -16,7 +16,7 @@ class PageControl extends \Nette\Application\UI\Control{
 	
 	public function __construct(\Nette\ComponentModel\IContainer $parent = NULL, $name = NULL) {
 		parent::__construct($parent, $name);
-		$this->pageModel = $this->presenter->context->PageModel;		
+		$this->pageModel = $this->presenter->context->getService('PageModel');		
 	}
 	
 	public function load($id) {

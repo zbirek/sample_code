@@ -22,7 +22,7 @@ class MenuControl extends \Nette\Application\UI\Control{
 	
 	public function __construct(\Nette\ComponentModel\IContainer $parent = NULL, $name = NULL) {
 		parent::__construct($parent, $name);
-		$this->menuModel = $this->presenter->context->MenuModel;
+		$this->menuModel = $this->presenter->context->getService('MenuModel');
 	}
 	
 	public function prepairMenu() {

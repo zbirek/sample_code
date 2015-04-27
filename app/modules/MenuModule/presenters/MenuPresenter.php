@@ -17,6 +17,6 @@ class MenuPresenter extends BaseBackendPresenter{
     public $menuModel;
     
     public function renderDefault() {
-        $this->template->items = $this->menuModel->getMenuFluent()->orderBy("position ASC")->fetchAll();
+        $this->template->items = $this->menuModel->getMenu();
     }
 }

@@ -16,11 +16,11 @@
 	],
 	"require": {
 		"php": ">= 5.3.7",
-		"nette/nette": "~2.2.0",
-		"dg/adminer-custom": "~1.5",
+		"nette/nette": "2.3.*",		
 		"dibi/dibi": "*",
-		"nextras/forms": "1.4",
-		"nextras/datagrid": "~2.1"
+		"nextras/forms": "~1.4",
+		"nextras/datagrid": "~2.1",
+		"janmarek/webloader": "~2.4"
 	},
 	"require-dev": {
 		"nette/tester": "~1.0"
