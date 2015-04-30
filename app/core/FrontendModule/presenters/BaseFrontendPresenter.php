@@ -2,7 +2,6 @@
 
 namespace App\FrontendModule\Presenters;
 
-
 /**
  * Description of BaseFrontendPresenter
  *
@@ -18,6 +17,11 @@ class BaseFrontendPresenter extends \App\Presenters\BasePresenter {
         $this->setLayout($this->context->parameters['appDir'] . '/core/FrontendModule/templates/@layout.latte');
     }
 
+    public function beforeRender() {
+        parent::beforeRender();
+        $this->template->mainTitle = "CMS 2015";
+    }
+
     public function createComponentMenu() {
         return new \MenuControl($this, 'menu');
     }
@@ -29,13 +33,14 @@ class BaseFrontendPresenter extends \App\Presenters\BasePresenter {
                 //WWW_DIR . '/colorbox/colorbox.css',
         ));
 
+
         $compiler = \WebLoader\Compiler::createCssCompiler($files, WWW_DIR . '/webtemp');
         $compiler->addFileFilter(new \WebLoader\Filter\LessFilter());
         //$compiler->addFilter(new WebLoader\Filter\VariablesFilter(array('foo' => 'bar')));
-         $compiler->addFilter(function ($code) {
-          return \CssMin::minify($code, array("remove-last-semicolon"));
-          });
-         
+        $compiler->addFilter(function ($code) {
+            return \CssMin::minify($code, array("remove-last-semicolon"));
+        });
+
         $control = new \WebLoader\Nette\CssLoader($compiler, '/webtemp');
         $control->setMedia('screen');
 
@@ -47,16 +52,17 @@ class BaseFrontendPresenter extends \App\Presenters\BasePresenter {
         $files->addFiles(array(
             'jquery.js',
             'netteForms.js',
-            'main.js'
+            'main.js',
+            'bootstrap.min.js'
         ));
-        
-        $compiler = \WebLoader\Compiler::createJsCompiler($files, WWW_DIR . "/webtemp");        
-        $compiler->addFilter(function ($code){
-            return \JShrink\Minifier::minify($code);            
+
+        $compiler = \WebLoader\Compiler::createJsCompiler($files, WWW_DIR . "/webtemp");
+        $compiler->addFilter(function ($code) {
+            return \JShrink\Minifier::minify($code);
         });
-        
-        
-        $control = new \WebLoader\Nette\JavaScriptLoader($compiler, "/webtemp");     
+
+
+        $control = new \WebLoader\Nette\JavaScriptLoader($compiler, "/webtemp");
         ///ddump($control);
         return $control;
     }

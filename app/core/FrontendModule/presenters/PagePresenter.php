@@ -15,6 +15,8 @@ class PagePresenter extends BaseFrontendPresenter {
     /** @var \App\MenuModel @inject */
     public $menuModel;
     
+
+    
     public $controls = array();
 
     public function startup() {
@@ -31,11 +33,13 @@ class PagePresenter extends BaseFrontendPresenter {
         
             $id_node = $node['id_node'];
             $id_module = $node['id_module'];
-
             $module = $this->modules->getModule($id_module);
             $this->createControl($module['control'], $id_node);
 		
 		$this->template->modules = $this->controls;
+        $this->template->title = $node['title'];
+        $this->template->seo_description = $node['seo_description'];
+        //ddump($node);
 		//ddump($this->template->modules);
     }
 

@@ -12,6 +12,9 @@ namespace App\AdminModule\Presenters;
 
 
 class BaseBackendPresenter extends \App\Presenters\BasePresenter{
+    
+    
+    public $backlink = '';
      
     public function startup() {
         parent::startup();
@@ -21,7 +24,8 @@ class BaseBackendPresenter extends \App\Presenters\BasePresenter{
             $this->redirect(':Sign:in');
         }
 		
-        $this->setLayout($this->context->parameters['appDir'] . '/core/BackendModule/templates/@layout.latte');        
+        $this->setLayout($this->context->parameters['appDir'] . '/core/BackendModule/templates/@layout.latte');  
+        //$this->backlink = $this->storeRequest();
     }
     
     public function createTemplate($class = NULL)

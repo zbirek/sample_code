@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use Nette\Caching\Cache;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,13 +20,27 @@ class PageModel extends BaseModel{
 	protected $tPage;
 	
 	const Model = "Page";
+    
+    protected $pages;
+    
+    /** @var \Nette\Caching\Cache */
+    protected $pageStorage;
 	
 	public function __construct(\DibiConnection $dibi, \Core\ModulesLoader $modules) {
 		parent::__construct($dibi, $modules);
 		$this->tPage = self::PREFIX . "page";
+        $this->pageStorage = new Cache(new \Nette\Caching\Storages\FileStorage(TEMP_DIR)); 
 	}
+    
+    public function setStorage() {
+        $pages = $this->getPageFluent()->fetchAssoc('id_node');
+        $this->pageStorage->save('pages', $pages);        
+    }
 	
-	
+	/**
+     * 
+     * @return \DibiFluent
+     */
 	public function getPageFluent() {
 		return $this->database->select("*")
 					->from($this->tPage);				
@@ -33,14 +48,18 @@ class PageModel extends BaseModel{
 	
 	/**
 	 * 
-	 * @param type $id
-	 * @return type
+	 * @param int $id
+	 * @return \Nette\Utils\ArrayHash
 	 */
 	public function getPage($id) {
-		return  $this->database->select("*")
-					->from($this->tPage)
-					->where('id_node = %i', $id)
-					->fetch();
+        $this->pages = $this->pageStorage->load('pages');            
+        
+        if(!$this->pages){
+            $this->pages = $this->getPageFluent()->fetchAssoc('id_node');
+            $this->pageStorage->save('pages', $this->pages);    
+        }
+        //ddump($this->pages[$id]);
+        return  $this->pages[$id];
 	}
 		
 	/**
@@ -80,7 +99,7 @@ class PageModel extends BaseModel{
 				->execute();
 		
 		$this->deleteNode($id_page);
-		
+		$this->pageStorage->remove('pages');
 		$this->database->commit();
 	}
 	

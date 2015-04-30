@@ -22,6 +22,7 @@
 				<td>
 					<div class="btn-group">
 						<a n:href="editPage $page->id_node" class="btn btn-xs btn-info"><span class="ace-icon fa fa-pencil bigger-120"></span></a>
+						<a n:href="Node:edit $page->id_node, 'backlink'=> $backlink" class="btn btn-xs btn-alert"><span class="ace-icon fa fa-wrench bigger-120"></span></a>
 						<a n:href="deletePage! $page->id_node" class="btn btn-xs btn-danger"><span class="ace-icon fa fa-trash bigger-120"></span></a>				
 					</div>
 				</td>

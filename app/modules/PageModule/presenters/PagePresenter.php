@@ -16,6 +16,7 @@ class PagePresenter extends BaseBackendPresenter{
 	
 	public function renderDefault() {
 		$this->template->pages = $this->pageModel->getPageFluent()->orderBy("id_node DESC")->fetchAll();
+        $this->template->backlink = $this->storeRequest();
 	}
 	
 	public function renderEditPage($id) {

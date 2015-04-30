@@ -3,34 +3,60 @@
     <h1>Menu</h1>
 </div>
 <div class="page-content">
-    <div class="col-sm-6">
-        <div class="dd" id="nestable">
-            <ol class="dd-list">
-                {foreach $items as $item}
-                    <li class="dd-item" data-id="{$item->id}">
-                        <div class="dd-handle">{$item->title}</div>
-                    </li>
-                {/foreach}
-            </ol>
-        </div>
+        {snippet node}
+    <div class="col-md-5 col-sm-12">
+            <div>    
+                {control menuForm}
+             
+            </div>
     </div>
+        {/snippet}
+
+
+    <div class="col-md-6 col-sm-12">
+        {snippet menu}
+            <div class="dd" id="nestable">
+                <ol class="dd-list">
+                    {foreach $items as $item}
+                        <li class="dd-item" data-id="{$item->id}">
+                            <div class="dd-handle">{$item->title}
+                                <div class="pull-right action-buttons">
+                                    <a n:href="Node:edit $item->id_node, 'backlink'=>$backlink" class="blue"><i class="ace-icon fa fa-wrench"></i></a>
+                                    <a n:href="delete! $item->id" class="red ajax"><i class="ace-icon fa fa-trash-o"></i></a>
+                                </div>
+                            </div>
+                        </li>
+                    {/foreach}
+                </ol>
+            </div>
+        </div>
+    {/snippet}
 </div>
 
 {/block}
 
 {block scripts}
-<script src="{$basePath}/admin_theme/assets/js/jquery.nestable.js"></script>
-<script>
-    $(function(){
-        $('.dd').nestable();
-        $('.dd-handle a').on('mousedown', function (e) {
-            e.stopPropagation();
+
+{snippet menuScripts}
+    <script src="{$basePath}/admin_theme/assets/js/jquery.nestable.js"></script>
+
+    <script>
+        $(function () {
+            $('.dd').nestable();
+
+            $('.dd-handle a').on('mousedown', function (e) {
+                e.stopPropagation();
+            });
+            $('.dd').on('change', function (e) {
+                var list = e.length ? e : $(e.target);
+                var output = list.data('output');
+                console.log(list.nestable('output'));
+            });
+            $("a.red").click(function () {
+                console.log('click');
+                return false;
+            });
         });
-        $('.dd').on('change', function (e) {
-            var list   = e.length ? e : $(e.target);
-            var output = list.data('output');
-            console.log(list.nestable('output'));
-        });
-    });
-</script>
+    </script>
+{/snippet}
 {/block}

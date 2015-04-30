@@ -20,6 +20,12 @@ class NodeModel extends BaseModel{
         $this->tNode = self::PREFIX . "node";
     }
     
+    public function getNodeFluent() {
+        return $this->database
+                ->select("*")
+                ->from($this->tNode);
+    }
+    
     public function setNodes() {
         $this->nodes = $this->database->select("*")
                 ->from($this->tNode)
@@ -33,6 +39,23 @@ class NodeModel extends BaseModel{
         }
         
         return $this->nodes[$slug];       
+    }
+    
+    /**
+     * vraci uzel podle id
+     * @param int $id
+     * @return \DibiRow
+     */
+    public function getNodeId($id) {
+        return $this->database
+                ->select("*")
+                ->from($this->tNode)
+                ->where('id_node = %i', $id)
+                ->fetch();
+    }
+    
+    public function editNode($values) {
+        $this->updateNodeSeoSettings($values['id_node'], $values['slug'], $values['seo_description'], $values['title']);
     }
     
     

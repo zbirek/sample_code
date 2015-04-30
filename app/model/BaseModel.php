@@ -47,7 +47,7 @@ class BaseModel{
 	 * @param varchar $slug
 	 * @param text $description
 	 */
-	public function updateNodeSeoSettings($id_node, $slug = NULL, $description = NULL) {
+	public function updateNodeSeoSettings($id_node, $slug = NULL, $description = NULL, $title = NULL) {
 		try{
 		$slug = \Nette\Utils\Strings::webalize($slug);
 		
@@ -59,7 +59,7 @@ class BaseModel{
 			
 			if($e->getCode() == 1062){
 				$slug = $id_node."-".$slug;
-				$this->database->update($this->tNode, ['slug' => $slug, 'seo_description' => $description])
+				$this->database->update($this->tNode, ['slug' => $slug, 'seo_description' => $description, 'title' => $title])
 					->where('id_node = %i', $id_node)				
 					->execute();
 			}
