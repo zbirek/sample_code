@@ -13,8 +13,11 @@ class BaseFrontendPresenter extends \App\Presenters\BasePresenter {
 
     public function startup() {
         parent::startup();
-
-        $this->setLayout($this->context->parameters['appDir'] . '/core/FrontendModule/templates/@layout.latte');
+        if(file_exists($file = $this->context->parameters['appDir'] . '/core/FrontendModule/templates/@layout_Custom.latte')) {
+            $this->setLayout($file);
+        }else{
+            $this->setLayout($this->context->parameters['appDir'] . '/core/FrontendModule/templates/@layout.latte');
+        }
     }
 
     public function beforeRender() {

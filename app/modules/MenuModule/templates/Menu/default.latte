@@ -49,13 +49,15 @@
             });
             $('.dd').on('change', function (e) {
                 var list = e.length ? e : $(e.target);
-                var output = list.data('output');
-                console.log(list.nestable('output'));
+                //var output = list.data('output');
+                var output = list.nestable('serialize');
+                $.nette.ajax({
+                    url: {plink saveOrder!},
+                    data: { order : output}
+                });
+                
             });
-            $("a.red").click(function () {
-                console.log('click');
-                return false;
-            });
+           
         });
     </script>
 {/snippet}

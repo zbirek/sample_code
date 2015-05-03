@@ -24,6 +24,7 @@ class MenuPresenter extends BaseBackendPresenter {
     }
     
     public function renderDefault() {
+        //ddump($this->menuModel->getTreeMenu());
         $this->template->items = $this->menuModel->getMenu();
         $this->backlink = $this->storeRequest();
         $this->template->backlink = $this->backlink;
@@ -48,7 +49,7 @@ class MenuPresenter extends BaseBackendPresenter {
         $form = new Form;
         $form->setRenderer(new \Nextras\Forms\Rendering\Bs3FormRenderer);
         $form->getElementPrototype()->class('ajax');
-        
+        //ddump($this->nodes);
         $form->addGroup('Přidání uzlů do menu');
         $form->addCheckboxList('items', 'Přidat do menu', $this->nodes);
         $form->addSubmit('send', 'Přidat');
@@ -81,5 +82,15 @@ class MenuPresenter extends BaseBackendPresenter {
 
         return $this->nodes;
     }
+    
+    public function handleSaveOrder() {
+        //ddump($this->getParameter('order')[0]);
+        $order = $this->getParameter('order');
+        
+        $this->menuModel->setOrder($order);
+        
+    }
+    
+    
 
 }

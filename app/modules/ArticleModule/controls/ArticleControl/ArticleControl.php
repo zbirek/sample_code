@@ -21,7 +21,7 @@ class ArticleControl extends \Nette\Application\UI\Control {
     
     public function __construct(\Nette\ComponentModel\IContainer $parent = NULL, $name = NULL) {
         parent::__construct($parent, $name);
-        $this->articleModel = $this->presenter->getContext()->ArticleModel;
+        $this->articleModel = $this->presenter->getContext()->getService('ArticleModel');
     }
     
     

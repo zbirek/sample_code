@@ -58,6 +58,23 @@ class MenuModel extends BaseModel{
         return $this->menu;
 	}
     
+    public function getTreeMenu() {
+        $items = $this->database->select("*")
+                ->from("$this->tMenu menu")
+                ->orderBy("position ASC")
+                ->fetchAssoc("id_parent|id");
+        
+        if(isset($items[0])){
+            $roots = $items[0];
+        }
+        
+        foreach($roots as $root) {
+            
+        }
+        ddump($roots);
+        
+    }
+    
     public function getPrimaryMenuItem() {
         $this->menu = $this->getMenu();        
         return reset($this->menu);
@@ -96,6 +113,31 @@ class MenuModel extends BaseModel{
         
         $this->menuStorage->remove('menu');
         
+    }
+    
+    public function setOrder($values) {
+        $this->database->update($this->tMenu, array('id_parent'=>0, 'position'=>0))
+                ->execute();
+        
+        $this->saveOrder($values);
+        
+    }
+    
+    
+    public function saveOrder($values, $id_parent = NULL) {
+        
+        foreach($values as $key => $val) {
+            $this->database->update($this->tMenu, array('position' => $key+1,
+                                                        'id_parent' => $id_parent))
+                    ->where('id = %i', $val['id'])
+                    ->execute();
+            
+            if(isset($val['children'])) {
+                $this->saveOrder($val['children'], $val['id']);
+            }
+            
+            //dump($values);
+        }
         
     }
 	
