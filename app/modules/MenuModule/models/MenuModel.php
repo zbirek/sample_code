@@ -30,9 +30,11 @@ class MenuModel extends BaseModel{
         $this->menuStorage = new Cache(new \Nette\Caching\Storages\FileStorage(TEMP_DIR)); 
 	}
 	
-	/***
-	 * @TODO cache!
-	 */
+	
+    public function invalidateMenu() {
+        $this->menuStorage->remove('menu');
+    }
+    
 	public function getMenuFluent() {
 		return $this->database->select("*")
 					->from("$this->tMenu menu")
@@ -120,6 +122,7 @@ class MenuModel extends BaseModel{
                 ->execute();
         
         $this->saveOrder($values);
+        $this->invalidateMenu();
         
     }
     
