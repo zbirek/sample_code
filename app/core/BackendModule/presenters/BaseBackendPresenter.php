@@ -23,6 +23,11 @@ class BaseBackendPresenter extends \App\Presenters\BasePresenter{
         {
             $this->redirect(':Sign:in');
         }
+        
+        if(!$this->getUser()->isInRole('admin')) {
+            $this->flashMessage('Nemáte oprávnění pro přístup do administrace', 'danger');
+            $this->redirect(':Frontend:Page:default');
+        }
 		
         $this->setLayout($this->context->parameters['appDir'] . '/core/BackendModule/templates/@layout.latte');  
         //$this->backlink = $this->storeRequest();

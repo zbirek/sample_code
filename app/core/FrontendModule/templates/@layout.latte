@@ -28,6 +28,9 @@
                 <a n:href="Page:default"><h1>Empty CMS</h1></a>
             </div>
             {control menu}
+            {snippet flash}
+                <div n:foreach="$flashes as $flash" class="alert alert-{$flash->type}">{$flash->message}</div>
+            {/snippet}
             {block content} {/block}
         </div>
         {control js}
