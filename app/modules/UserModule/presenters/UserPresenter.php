@@ -15,7 +15,8 @@ class UserPresenter extends BaseBackendPresenter {
      * @var \App\UserModel
      */
     public $model;
-
+    
+    
     public function renderDefault() {
         $this->template->users = $this->model->getAllUsers();
     }
@@ -29,7 +30,8 @@ class UserPresenter extends BaseBackendPresenter {
         $form->addText('login', 'Login');
         $form->addText('name', 'Jméno');
         $form->addText('email', 'E-mail');
-        $form->addPassword('password', 'Heslo');
+        $form->addPassword('password', 'Heslo');        
+        $form->addRadioList('role', 'Uživatelská role', \App\UserModel::$role);
 
         $form->addSubmit('send', 'Přidej uživatele');
 
@@ -48,7 +50,7 @@ class UserPresenter extends BaseBackendPresenter {
                 $this->redirect('default');
             } else {
                 $this->model->add($values);
-
+                
                 $this->flashMessage('Uživatel byl přidán', 'success');
                 $this->redirect('this');
             }
@@ -64,21 +66,22 @@ class UserPresenter extends BaseBackendPresenter {
         $this->redirect('this');
     }
 
-    public function createComponentGrid() {
+    public function createComponentUserGrid() {
         $grid = new \Nextras\Datagrid\Datagrid();
 
         $grid->addColumn('id_user', 'ID');
         $grid->addColumn('login', 'Login');
         $grid->addColumn('name', 'Jméno');
         $grid->addColumn('email', 'E-mail');
+        $grid->addColumn('role', 'Role');
 
-        $_this = $this;
-        $grid->setDataSourceCallback(function($filter, $order)use($_this) {
+        $grid->setDataSourceCallback(function($filter, $order) {
 
-            return $_this->model->getAllUsers();
+            return $this->model->getAllUsers();
         });
-
-        $grid->addCellsTemplate(__DIR__ . '/../templates/Backend/@grid.latte');
+        
+        $grid->addCellsTemplate(LIBS_DIR . '/nextras/datagrid/bootstrap-style/@bootstrap3.datagrid.latte');
+        $grid->addCellsTemplate(__DIR__ . '/../templates/User/grid.latte');
 
         return $grid;
     }

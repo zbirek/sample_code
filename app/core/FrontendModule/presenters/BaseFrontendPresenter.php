@@ -44,7 +44,7 @@ class BaseFrontendPresenter extends \App\Presenters\BasePresenter {
             return \CssMin::minify($code, array("remove-last-semicolon"));
         });
 
-        $control = new \WebLoader\Nette\CssLoader($compiler, '/webtemp');
+        $control = new \WebLoader\Nette\CssLoader($compiler, $this->template->basePath . '/webtemp');
         $control->setMedia('screen');
 
         return $control;
@@ -59,7 +59,7 @@ class BaseFrontendPresenter extends \App\Presenters\BasePresenter {
             'bootstrap.min.js'
         ));
 
-        $compiler = \WebLoader\Compiler::createJsCompiler($files, WWW_DIR . "/webtemp");
+        $compiler = \WebLoader\Compiler::createJsCompiler($files,  WWW_DIR . "/webtemp");
         $compiler->addFilter(function ($code) {
             return \JShrink\Minifier::minify($code);
         });

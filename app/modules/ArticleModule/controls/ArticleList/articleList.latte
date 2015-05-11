@@ -1,0 +1,7 @@
+{foreach $articles as $article}
+    <div class="thumbnail">
+        <h2><a href="{plink Page:default $article->slug}">{$article->title}</a></h2>
+        {$article->prefix|noescape}        
+    </div>
+    
+{/foreach}

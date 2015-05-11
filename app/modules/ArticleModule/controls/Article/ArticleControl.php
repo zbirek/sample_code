@@ -26,7 +26,7 @@ class ArticleControl extends \Nette\Application\UI\Control {
     
     
 	public function load($id = NULL) {		
-		$this->article = $this->articleModel->getFluentArticle()->where('id_article = %i', $id)->fetch();
+		$this->article = $this->articleModel->getFluentArticle()->where('article.id_node = %i', $id)->fetch();
 		
 		
 	}

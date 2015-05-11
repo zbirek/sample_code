@@ -1,0 +1,22 @@
+{block content}
+<div class="page-header">
+	<h1>Textový článek</h1>
+</div>
+
+<div class="page-content">
+	{control articleForm}
+</div>
+ 
+{/block}
+{block scripts}
+<script src="{$basePath}/ckeditor/ckeditor.js"></script>
+<script src="{$basePath}/ckeditor/adapters/jquery.js"></script>
+   
+<script>
+$(document).ready(function() {
+  $('#frm-articleForm-text, #frm-articleForm-prefix').ckeditor();
+  
+});
+   
+</script>
+{/block}

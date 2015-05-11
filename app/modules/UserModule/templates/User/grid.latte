@@ -1,0 +1,10 @@
+{define row-actions}
+<a href="{plink editUser $row->id_user}" class="btn btn-xs btn-info"><span class="ace-icon fa fa-pencil bigger-120"></span></a>
+<a href="{plink deleteUser! $row->id_user}" class="btn btn-xs btn-danger"><span class="ace-icon fa fa-trash bigger-120"></span></a>				
+{/define}
+
+{define col-role}
+<td>
+    {\App\UserModel::$role[$cell]}
+</td>
+{/define}

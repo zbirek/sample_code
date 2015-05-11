@@ -1,0 +1,12 @@
+{* Latte template *}
+
+{block content}
+
+<h1>{$article->title} </h1>
+<div class="alert alert-default">
+Přidal: {$article->name}, Dne {$article->created_at|date:"j.n.Y"}
+</div>
+
+{$article->prefix|noescape}	
+
+{$article->text|noescape}

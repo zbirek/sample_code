@@ -1,0 +1,13 @@
+{define row-actions}
+{? $backlink = $presenter->storeRequest();}
+<a href="{plink article $row->id_node}" class="btn btn-xs btn-info"><span class="ace-icon fa fa-pencil bigger-120"></span></a>
+<a href="{plink Node:edit $row->id_node, 'backlink'=> $backlink}" class="btn btn-xs btn-alert"><span class="ace-icon fa fa-wrench bigger-120"></span></a>
+<a href="{plink deleteArticle! $row->id_node}" class="btn btn-xs btn-danger"><span class="ace-icon fa fa-trash bigger-120"></span></a>				
+
+{/define}
+
+{define col-created_at}
+<td>
+    {$cell|date:'j.n.Y H:i'}
+</td>
+{/define}

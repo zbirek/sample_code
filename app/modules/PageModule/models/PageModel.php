@@ -19,7 +19,7 @@ class PageModel extends BaseModel{
 
 	protected $tPage;
 	
-	const Model = "Page";
+	const MODEL = "Page";
     
     protected $pages;
     
@@ -70,7 +70,7 @@ class PageModel extends BaseModel{
 		
 		$this->database->begin();
 		
-			$module = $this->modules->getModuleByUid(self::Model);		
+			$module = $this->modules->getModuleByUid(self::MODEL);		
 			$id_node = $this->initNode($module['id_module']);
 			$values['id_node'] = $id_node;
 			// pridani clanku

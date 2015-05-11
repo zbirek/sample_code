@@ -13,6 +13,12 @@ class UserModel extends \App\BaseModel {
 
     /** @var string */
     private $tUser;
+    
+    public static $role = array(
+                            'admin' => 'Admin',
+                            'user' => 'Uživatel'
+                        );
+
 
     public function __construct(\DibiConnection $database) {
         parent::__construct($database);
