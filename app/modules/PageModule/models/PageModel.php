@@ -36,6 +36,10 @@ class PageModel extends BaseModel{
         $pages = $this->getPageFluent()->fetchAssoc('id_node');
         $this->pageStorage->save('pages', $pages);        
     }
+    
+    public function invalidateCache() {
+        $this->pageStorage->remove('pages');
+    }
 	
 	/**
      * 
@@ -88,7 +92,9 @@ class PageModel extends BaseModel{
 	public function editPage($id_page, $values) {		
 		$this->database->update($this->tPage, $values)
 			->where("id_node = %i", $id_page)
-			->execute();				
+			->execute();
+        
+        $this->invalidateCache();
 	}
 	
 	public function deletePage($id_page) {
